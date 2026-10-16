@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* KHUNG GRID CHUNG */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Sidebar 1 phần, Content 3 phần */
+    grid-template-rows: auto 1fr auto; /* Header tự động, Content chiếm phần giữa, Footer tự động */
+    grid-template-areas: 
+        "header header"
+        "sidebar content"
+        "footer footer";
+    height: 100vh; /* Lấp đầy 100% chiều cao màn hình */
+}
+
+/* ĐỊNH DẠNG TỪNG PHẦN TỬ (Được gắn tên bằng grid-area) */
+.header {
+    grid-area: header;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.content {
+    grid-area: content;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* =========================================
+   LÀM RESPONSIVE VỚI MEDIA QUERIES (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* Chỉ còn 1 cột duy nhất */
+        grid-template-rows: auto auto 1fr auto;
+        /* Sắp xếp lại các phần tử thành dạng xếp chồng dọc */
+        grid-template-areas: 
+            "header"
+            "sidebar"
+            "content"
+            "footer";
+    }
+}
